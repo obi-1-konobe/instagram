@@ -24,6 +24,13 @@ class Profile(models.Model):
         verbose_name='Avatar'
     )
 
+    name = models.CharField(
+        null=True,
+        blank=True,
+        max_length=50,
+        verbose_name='First name'
+    )
+
     about_me = models.TextField(
         null=True,
         blank=True,
