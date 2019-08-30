@@ -29,4 +29,4 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'password', 'password_confirm']
+        fields = ['username', 'password', 'password_confirm', 'email']
