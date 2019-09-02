@@ -1,0 +1,18 @@
+{% extends "base_webapp.html" %}
+{% load staticfiles %}
+{% block title %}Instagram{% endblock %}
+
+{% block content %}
+{% for post in posts %}
+<div class="content d-flex justify-content-center">
+    <div class="card" style="width: 40rem;">
+      <div class="card-body">
+          <h5 class="card-title">{{ post.author }}</h5>
+          <img src="{{ post.picture.url }}" class="card-img-top" alt="{% static '733614.svg' %}">
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <p class="card-text">{{ post.author }} {{post.description }}</p>
+      </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

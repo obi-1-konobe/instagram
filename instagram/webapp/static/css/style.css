@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #222222;
+}
+
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.main_logo {
+    width: 25px;
+}
+
+.content {
+
+}
+
+
