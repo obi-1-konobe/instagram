@@ -12,21 +12,6 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="menu_logo">
-                <a href="{% url 'webapp:index' %}" class="d-flex">
-                    <img src="{% static '733614.svg'%}" alt="logo" class="main_logo">
-                    <p class="logo_text">instagram</p>
-                </a>
-            </div>
-            <div class="menu">
-                <ul>
-                    <li><a href="{% url 'accounts:login' %}" class="btn btn-primary">Войти</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
     <div class="container">
         {% block content %}{% endblock %}
     </div>
