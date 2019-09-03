@@ -5,9 +5,12 @@
 {% for post in posts %}
 <div class="content d-flex justify-content-center">
     <div class="card" style="width: 40rem;">
-      <div class="card-body">
+      <div class="card-body d-flex justify-content-between">
           <h5 class="card-title">{{ post.author }}</h5>
+          <a href="{% url 'webapp:post_detail' post.pk %}">post</a>
+      </div>
           <img src="{{ post.picture.url }}" class="card-img-top" alt="{% static '733614.svg' %}">
+      <div class="card-body">
           <a href="#" class="btn btn-primary">Go somewhere</a>
           <p class="card-text">{{ post.author }} {{post.description }}</p>
       </div>
