@@ -17,12 +17,18 @@
             <div class="menu_logo">
                 <a href="{% url 'webapp:index' %}" class="d-flex">
                     <img src="{% static '733614.svg'%}" alt="logo" class="main_logo">
-                    <p class="logo_text">instagram</p>
+                    <img src="{% static 'Instagram_logo.svg.png'%}" alt="logo" class="logo_text mt-1">
                 </a>
             </div>
             <div class="menu">
-                <ul>
+                <ul class="d-flex">
+                    {% if user.is_authenticated %}
+                    <li>{{ user.username }}</li>
+                    <li><a href="{% url 'accounts:logout' %}">exit</a></li>
+                    {% else %}
                     <li><a href="{% url 'accounts:login' %}" class="btn btn-primary">Войти</a></li>
+                    <li><a href="{% url 'accounts:create' %}" class=""><b style="color: blue;">Зарегистрироваться</b></a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -33,4 +39,5 @@
     <script src="../static/js/jquery-3.4.1.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
 </body>
+</html>
 </html>
