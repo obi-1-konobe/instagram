@@ -23,6 +23,7 @@
             <div class="menu">
                 <ul class="d-flex">
                     {% if user.is_authenticated %}
+                    <li><a href="{% url 'webapp:post_create' %}">New post</a></li>
                     <li><a href="{% url 'accounts:user_detail' user.pk %}">{{ user.username }}</a></li>
                     <li><a href="{% url 'accounts:logout' %}">exit</a></li>
                     {% else %}

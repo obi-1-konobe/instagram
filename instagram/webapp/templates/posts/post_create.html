@@ -1,0 +1,10 @@
+{% extends "base_webapp.html" %}
+
+{% block content %}
+<h1>Create new post</h1>
+
+<form action="{% url 'webapp:post_create' %}" method="post" enctype="multipart/form-data">
+    {% include 'partial/form.html' %}
+</form>
+{% endblock %}
+
