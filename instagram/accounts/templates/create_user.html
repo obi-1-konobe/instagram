@@ -1,14 +1,14 @@
-
-{% block title_block %}Login{% endblock %}
+{% extends "base_accounts.html" %}
 
 {% load staticfiles %}
 
 {% block content %}
-
-{% load staticfiles %}
-
-    <h1>Регистрация</h1>
+<div class="d-flex align-items-center flex-column">
+    <div class="card mt-5 align-items-center" style="width: 25rem;">
+  <img src="{% static 'Instagram_logo.svg.png' %}" class="card-img-top" style="width: 18rem;" alt="...">
+  <div class="card-body">
     <form action="{% url 'accounts:create' %}" method="post">
+        <div class="text-center">
         {% csrf_token %}
         {% for error in form.non_field_errors %}
             <p class="form-error">{{ error }}</p>
@@ -28,6 +28,15 @@
                 {% endif %}
             </div>
         {% endfor %}
-        <button type="submit">Зарегистрироваться</button>
+        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+        </div>
     </form>
+  </div>
+</div>
+
+</div>
+
+
 {% endblock %}
+
+

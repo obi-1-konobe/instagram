@@ -21,8 +21,9 @@ a {
     width: 25px;
 }
 
-.content {
-
+.form-group {
+    display: flex;
+    justify-content: space-between;
 }
 
 
