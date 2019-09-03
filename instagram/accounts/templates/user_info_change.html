@@ -1,0 +1,10 @@
+{% extends 'base_webapp.html' %}
+
+{% block title %}Личный кабинет{% endblock %}
+
+{% block content %}
+    <h1>Личный кабинет</h1>
+    <form action="{% url 'accounts:user_update' user.pk %}" method="post" enctype="multipart/form-data">
+        {% include 'partial/form.html' %}
+    </form>
+{% endblock %}

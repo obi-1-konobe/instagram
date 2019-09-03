@@ -10,25 +10,11 @@ class Profile(models.Model):
         verbose_name='User'
     )
 
-    email = models.EmailField(
-        blank=False,
-        null=False,
-        max_length=50,
-        verbose_name='Email'
-    )
-
     avatar = models.ImageField(
         null=False,
         blank=False,
         upload_to='user_pics',
         verbose_name='Avatar'
-    )
-
-    name = models.CharField(
-        null=True,
-        blank=True,
-        max_length=50,
-        verbose_name='First name'
     )
 
     about_me = models.TextField(
