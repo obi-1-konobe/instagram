@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.views.generic import DetailView, UpdateView
 
 from accounts.forms import UserCreationForm, UserChangeForm
+from webapp.models import Post
 
 
 def register_view(request, *args, **kwargs):
@@ -24,6 +25,11 @@ class UserDetailView(DetailView):
     model = User
     template_name = 'user_detail.html'
     context_object_name = 'user_obj'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['posts'] = self.object.pictures.all()
+        return context
 
 
 class UserPersonalInfoChangeView(UserPassesTestMixin, UpdateView):
