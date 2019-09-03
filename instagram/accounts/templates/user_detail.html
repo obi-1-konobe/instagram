@@ -1,0 +1,27 @@
+{% extends "base_webapp.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+    <div class="row">
+        <div class="avatar col-md-4 text-center">
+            <img src="{{ user.profile.avatar.url }}" alt="avatar" class="avatar_img">
+        </div>
+        <div class="user_info d-flex flex-column col-md-8 justify-content-center">
+            <div class="d-flex">
+                <h4>{{ user_obj.username }}</h4>
+                {% if user.pk == user_obj.pk %}
+                    <a href="#">Редактировать профиль</a>
+                {% endif %}
+            </div>
+            <div class="">
+                публикации подписчиков Подписки
+            </div>
+            <div class="">
+                {{ user_obj.profile.name }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
