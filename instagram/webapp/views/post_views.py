@@ -2,7 +2,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView
 
-from webapp.forms import PostForm
+from webapp.forms import PostForm, CommentForm
 from webapp.models import Post
 
 
@@ -17,6 +17,12 @@ class IndexView(ListView):
 class PostDetailView(DetailView):
     model = Post
     template_name = 'posts/detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = self.object.comments.all().order_by('-created_at')
+        context['form'] = CommentForm
+        return context
 
 
 class PostCreateView(CreateView):
@@ -35,5 +41,7 @@ class PostCreateView(CreateView):
         if not request.user.is_authenticated:
             return redirect('accounts:login')
         return super().dispatch(request, *args, **kwargs)
+
+
 
 

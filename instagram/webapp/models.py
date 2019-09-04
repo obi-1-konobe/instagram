@@ -27,3 +27,34 @@ class Post(models.Model):
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name='Add time')
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(
+        'webapp.Post',
+        related_name='comments',
+        on_delete=models.CASCADE,
+        verbose_name='Post'
+    )
+
+    author = models.CharField(
+        max_length=20,
+        null=False,
+        blank=False,
+        verbose_name='Author'
+    )
+
+    text = models.TextField(
+        max_length=1000,
+        null=False,
+        blank=False,
+        verbose_name='Text'
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name='Add time'
+    )
+
+    def __str__(self):
+        return self.text[:20]

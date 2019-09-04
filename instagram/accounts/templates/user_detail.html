@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="avatar col-md-4 text-center">
-            <img src="{{ user.profile.avatar.url }}" alt="avatar" class="avatar_img">
+            <img src="{{ user_obj.profile.avatar.url }}" alt="avatar" class="avatar_img">
         </div>
         <div class="user_info d-flex flex-column col-md-8 justify-content-center">
             <div class="d-flex">
@@ -19,7 +19,7 @@
                 публикации подписчиков Подписки
             </div>
             <div class="">
-                {{ user.first_name }}
+                {{ user_obj.first_name }}
             </div>
         </div>
     </div>

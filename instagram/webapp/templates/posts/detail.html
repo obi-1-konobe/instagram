@@ -10,7 +10,14 @@
       <div class="card-body">
         <h5 class="card-title">{{ post.author }}</h5>
         <p class="card-text"><b>{{ post.author }}</b> {{ post.description }}</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        {% for comment in comments %}
+          <p class="card-text"><b>{{ comment.author }}</b> {{ comment.text }}</p>
+        {% endfor %}
+        {% if user.is_authenticated %}
+        <form action="{% url 'webapp:comment_create' post.pk %}" method="post">
+          {% include 'partial/comment_form.html' %}
+        </form>
+        {% endif %}
       </div>
     </div>
   </div>
