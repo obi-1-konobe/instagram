@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib.auth.models import User
 from django.db.models import ImageField
 from django.db import models
 
@@ -27,6 +28,12 @@ class Post(models.Model):
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name='Add time')
+
+    users_like = models.ManyToManyField(
+        User,
+        related_name='liked_posts',
+        blank=True
+    )
 
 
 class Comment(models.Model):
