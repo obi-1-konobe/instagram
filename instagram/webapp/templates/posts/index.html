@@ -10,7 +10,7 @@
 {% block content %}
 {% for post in posts %}
 <div class="content d-flex justify-content-center">
-    <div class="card" style="width: 40rem;">
+    <div class="card mt-5" style="width: 40rem;">
       <div class="card-body d-flex justify-content-between">
           <a href="{% url 'accounts:user_detail' post.author.pk %}">{{ post.author }}</a>
           <a href="{% url 'webapp:post_detail' post.pk %}">post</a>

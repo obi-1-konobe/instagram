@@ -1,10 +1,14 @@
 body {
     font-family: Arial, sans-serif;
-    background: #ffffff;
+    background: #fafafa;
     color: #222222;
 }
 
-
+nav {
+    background: #ffffff;
+    border-bottom: solid 1px #efefef;
+    height:70px;
+}
 
 a {
     text-decoration: none;
@@ -35,7 +39,7 @@ textarea {
 }
 
 .avatar_img {
-    border-radius: 50%;
+    border-radffffffius: 50%;
     width: 150px;
 }
 
