@@ -1,6 +1,12 @@
 {% extends "base_webapp.html" %}
 {% load staticfiles %}
 
+{% block search %}
+<form action="{% url 'webapp:search' %}" method="get">
+    {% include 'partial/search_form.html' %}
+</form>
+{% endblock %}
+
 {% block content %}
 {% for post in posts %}
 <div class="content d-flex justify-content-center">

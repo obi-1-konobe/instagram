@@ -20,6 +20,9 @@
                     <img src="{% static 'Instagram_logo.svg.png'%}" alt="logo" class="logo_text mt-1">
                 </a>
             </div>
+            <div>
+                {% block search %}{% endblock %}
+            </div>
             <div class="menu">
                 <ul class="d-flex">
                     {% if user.is_authenticated %}

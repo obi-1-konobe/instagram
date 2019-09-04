@@ -2,7 +2,7 @@ from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView
 
-from webapp.forms import PostForm, CommentForm
+from webapp.forms import PostForm, CommentForm, SearchForm
 from webapp.models import Post
 
 
@@ -12,6 +12,11 @@ class IndexView(ListView):
 
     def get_queryset(self):
         return Post.objects.all().order_by('-created_at')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_form'] = SearchForm
+        return context
 
 
 class PostDetailView(DetailView):
@@ -23,6 +28,7 @@ class PostDetailView(DetailView):
         context['comments'] = self.object.comments.all().order_by('-created_at')
         context['form'] = CommentForm
         context['likes'] = len(self.object.users_like.all())
+
         return context
 
 

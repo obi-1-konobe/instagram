@@ -1,0 +1,13 @@
+{% extends "base_webapp.html" %}
+{% block search %}
+<form action="{% url 'webapp:search' %}" method="get">
+    {% include 'partial/search_form.html' %}
+</form>
+{% endblock %}
+{% block content %}
+{% for result in results %}
+          <div class="card-header d-flex justify-content-between">
+              <a href="{% url 'accounts:user_detail' result.pk %}">{{ result.username }}</a>
+          </div>
+{% endfor %}
+{% endblock %}
