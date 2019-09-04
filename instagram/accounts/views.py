@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.views.generic import DetailView, UpdateView
 
 from accounts.forms import UserCreationForm, UserChangeForm
+from accounts.models import Profile
 from webapp.models import Post
 
 
@@ -29,6 +30,9 @@ class UserDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['posts'] = self.object.pictures.all()
+        context['subscribers'] = len(self.object.profile.subscriber.all())
+        context['subscribe_to'] = len(self.object.profile.subscribe_to.all())
+
         return context
 
 
@@ -46,8 +50,12 @@ class UserPersonalInfoChangeView(UserPassesTestMixin, UpdateView):
 
 
 def subscribe_to_user(request, **kwargs):
-    user = request.user
-    subscribe_to = User.objects.get(pk=kwargs['pk'])
+    subscriber_profile = Profile.objects.get(user=request.user.pk)
+    user_profile = Profile.objects.get(user=kwargs['pk'])
 
-    subscribe_to.profile.subscriber.add(user)
+    if subscriber_profile in user_profile.subscriber.all():
+        subscriber_profile.subscribe_to.remove(user_profile)
+    else:
+        subscriber_profile.subscribe_to.add(user_profile)
+
     return redirect(request.META.get('HTTP_REFERER'))

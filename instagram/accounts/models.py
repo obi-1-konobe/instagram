@@ -39,7 +39,7 @@ class Profile(models.Model):
     )
 
     subscribe_to = models.ManyToManyField(
-        User,
+        'accounts.Profile',
         related_name='subscriber',
         blank=True
     )
