@@ -13,6 +13,8 @@
                 <h4>{{ user_obj.username }}</h4>
                 {% if user.pk == user_obj.pk %}
                     <a href="{% url 'accounts:user_update' user.pk %}">Редактировать профиль</a>
+                {% else %}
+                    <a href="{% url 'accounts:subscribe_to_user' user_obj.pk %}">Подписаться</a>
                 {% endif %}
             </div>
             <div class="">

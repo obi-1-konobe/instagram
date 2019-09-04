@@ -43,3 +43,11 @@ class UserPersonalInfoChangeView(UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         return self.request.user.pk == self.kwargs['pk']
+
+
+def subscribe_to_user(request, **kwargs):
+    user = request.user
+    subscribe_to = User.objects.get(pk=kwargs['pk'])
+
+    subscribe_to.profile.subscriber.add(user)
+    return redirect(request.META.get('HTTP_REFERER'))

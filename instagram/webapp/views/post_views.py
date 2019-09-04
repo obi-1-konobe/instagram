@@ -52,7 +52,7 @@ class PostCreateView(CreateView):
 
 def put_likes(request, **kwargs):
     user = request.user
-    post = get_object_or_404(Post, pk=kwargs['pk'])
+    post = Post.objects.get(pk=kwargs['pk'])
 
     if user in post.users_like.all():
         post.users_like.remove(user)
