@@ -38,6 +38,12 @@ class Profile(models.Model):
         max_length=10,
     )
 
+    subscribe_to = models.ManyToManyField(
+        User,
+        related_name='subscriber',
+        blank=True
+    )
+
     def __str__(self):
         return self.user.get_full_name() + "'s Profile"
 

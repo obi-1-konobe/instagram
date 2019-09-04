@@ -19,7 +19,10 @@
                 публикации подписчиков Подписки
             </div>
             <div class="">
-                {{ user_obj.first_name }}
+                {{ user_obj.first_name }} {{ user_obj.last_name }}
+            </div>
+            <div>
+                {{ user_obj.profile.about_me }}
             </div>
         </div>
     </div>
