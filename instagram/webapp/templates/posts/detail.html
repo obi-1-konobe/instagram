@@ -5,6 +5,9 @@
   <div class="row no-gutters">
     <div class="col-md-8">
       <img src="{{ post.picture.url }}" class="card-img" alt="image" style="width:100%;">
+      <div>
+        <a href="{% url 'webapp:put_likes' post.pk %}">like</a>
+      </div>
     </div>
     <div class="col-md-4">
       <div class="card-body">

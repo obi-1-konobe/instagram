@@ -1,4 +1,4 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView
 
@@ -41,6 +41,13 @@ class PostCreateView(CreateView):
         if not request.user.is_authenticated:
             return redirect('accounts:login')
         return super().dispatch(request, *args, **kwargs)
+
+
+def put_likes(request, **kwargs):
+    user = request.user
+    post = get_object_or_404(Post, pk=kwargs['pk'])
+    post.users_like.add(user)
+    return redirect(request.META.get('HTTP_REFERER'))
 
 
 
