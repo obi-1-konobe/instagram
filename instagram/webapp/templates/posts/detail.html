@@ -7,6 +7,11 @@
       <img src="{{ post.picture.url }}" class="card-img" alt="image" style="width:100%;">
       <div>
         <a href="{% url 'webapp:put_likes' post.pk %}">like</a>
+        {% if likes > 0 %}
+        <div>
+          <b>{{ likes }} отметок "Нравится"</b>
+        </div>
+        {% endif %}
       </div>
     </div>
     <div class="col-md-4">

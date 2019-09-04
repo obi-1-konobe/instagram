@@ -22,6 +22,7 @@ class PostDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['comments'] = self.object.comments.all().order_by('-created_at')
         context['form'] = CommentForm
+        context['likes'] = len(self.object.users_like.all())
         return context
 
 
@@ -46,7 +47,12 @@ class PostCreateView(CreateView):
 def put_likes(request, **kwargs):
     user = request.user
     post = get_object_or_404(Post, pk=kwargs['pk'])
-    post.users_like.add(user)
+
+    if user in post.users_like.all():
+        post.users_like.remove(user)
+    else:
+        post.users_like.add(user)
+
     return redirect(request.META.get('HTTP_REFERER'))
 
 
