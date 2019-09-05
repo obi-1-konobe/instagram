@@ -26,9 +26,16 @@
             <div class="menu">
                 <ul class="d-flex">
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'webapp:post_create' %}">New post</a></li>
-                    <li><a href="{% url 'accounts:user_detail' user.pk %}">{{ user.username }}</a></li>
-                    <li><a href="{% url 'accounts:logout' %}">exit</a></li>
+                    <li>
+                        <a href="{% url 'webapp:post_create' %}" class="mr-3">
+                            <img src="{% static 'post.png' %}" alt="new post" style="width:25px;">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'accounts:user_detail' user.pk %}">
+                            <img src="{% static 'user.png' %}" alt="profile" style="width:25px;">
+                        </a>
+                    </li>
                     {% else %}
                     <li><a href="{% url 'accounts:login' %}" class="btn btn-primary">Войти</a></li>
                     <li><a href="{% url 'accounts:create' %}" class=""><b style="color: blue;">Зарегистрироваться</b></a></li>
