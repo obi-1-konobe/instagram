@@ -31,13 +31,22 @@
           <a href="{% url 'webapp:post_detail' post.pk %}" class="ml-2">
               <img src="{% static 'comment.png' %}" alt="comments" style="width:25px;">
           </a>
-        {% if likes > 0 %}
+        {% if post.users_like.all.count > 0 %}
         <div>
-          <b>{{ likes }} отметок "Нравится"</b>
+          <b> {{ post.users_like.all.count }} отметок "Нравится"</b>
         </div>
         {% endif %}
       </div>
-          <p class="card-text"><b>{{ post.author }}</b> {{post.description }}</p>
+          <p class="card-text mb-1"><b>{{ post.author }}</b> {{post.description }}</p>
+          <a href="{% url 'webapp:post_detail' post.pk %}" style="color: grey;">
+              Посмотреть все комментарии ({{ post.comments.all.count }})
+          </a>
+          <p class="card-text"><b>{{ post.comments.last.author }}</b> {{ post.comments.last.text }}</p>
+        {% if user.is_authenticated %}
+        <form action="{% url 'webapp:comment_create' post.pk %}" method="post">
+          {% include 'partial/comment_form.html' %}
+        </form>
+        {% endif %}
       </div>
     </div>
 </div>
