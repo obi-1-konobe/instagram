@@ -26,7 +26,6 @@ class IndexView(ListView):
         return super().dispatch(request, *args, **kwargs)
 
 
-
 class PostDetailView(DetailView):
     model = Post
     template_name = 'posts/detail.html'
