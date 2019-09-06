@@ -13,7 +13,14 @@
           <h5 class="card-title"><b>{{ post.author }}</b></h5>
         </a>
         <hr>
-        <p class="card-text"><b>{{ post.author }}</b> {{ post.description }}</p>
+        <p class="card-text">
+            <b>
+            <a href="{% url 'accounts:user_detail' post.author.pk %}">
+                {{ post.author }}
+            </a>
+        </b>
+            {{ post.description }}
+        </p>
         {% for comment in comments %}
           <p class="card-text"><b>{{ comment.author }}</b> {{ comment.text }}</p>
         {% endfor %}

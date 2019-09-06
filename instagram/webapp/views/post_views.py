@@ -20,6 +20,12 @@ class IndexView(ListView):
         context['form'] = CommentForm
         return context
 
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('accounts:login')
+        return super().dispatch(request, *args, **kwargs)
+
+
 
 class PostDetailView(DetailView):
     model = Post
