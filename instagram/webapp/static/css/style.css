@@ -39,8 +39,9 @@ textarea {
 }
 
 .avatar_img {
-    border-radffffffius: 50%;
+    border-radius: 50%;
     width: 150px;
+    border: 1px solid #efefef;
 }
 
 
